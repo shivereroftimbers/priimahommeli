@@ -1,0 +1,122 @@
+<html>
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>PrimaPower</title>
+
+ <style>
+ ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: rgb(0, 132, 201);
+	border-collapse: collapse;
+}
+li .ikoni {
+	height: 7vh;
+    display: block;
+    padding: 0.5vh 3vw;
+    float: right;
+	cursor: pointer;
+}
+li .ikoni:hover {
+    }
+li .logo{
+	height: 8vh;
+	display: block;
+	float: left;
+}
+ </style>
+ 
+ <script>
+ function menu(valinta){
+	switch(valinta) {
+    case 0:
+        document.getElementById("ikkuna").innerHTML =
+		somediv;
+		//some valittu
+        document.getElementById("asetukset").innerHTML =
+		'<img class="ikoni" src="https://img.icons8.com/ios/50/000000/settings-filled.png">';
+        document.getElementById("laitteet").innerHTML =
+		'<img class="ikoni" src="https://img.icons8.com/ios/50/000000/joystick-filled.png">';
+		document.getElementById("some").innerHTML =
+		'<img class="ikoni" src="https://img.icons8.com/ios/50/000000/secured-letter.png">';
+		break;
+    case 1:
+        document.getElementById("ikkuna").innerHTML =
+		laitteetdiv;
+		//laitteet valittu
+        document.getElementById("asetukset").innerHTML =
+		'<img class="ikoni" src="https://img.icons8.com/ios/50/000000/settings-filled.png">';
+        document.getElementById("laitteet").innerHTML =
+		'<img class="ikoni" src="https://img.icons8.com/ios/50/000000/joystick.png">';
+        document.getElementById("some").innerHTML =
+		'<img class="ikoni" src="https://img.icons8.com/ios/50/000000/secured-letter-filled.png">';
+		break;
+    case 2:
+        document.getElementById("ikkuna").innerHTML =
+		asetuksetdiv;
+        //asetukset valittu
+        document.getElementById("asetukset").innerHTML =
+		'<img class="ikoni" src="https://img.icons8.com/ios/50/000000/settings.png">';
+        document.getElementById("laitteet").innerHTML =
+		'<img class="ikoni" src="https://img.icons8.com/ios/50/000000/joystick-filled.png">';
+		document.getElementById("some").innerHTML =
+		'<img class="ikoni" src="https://img.icons8.com/ios/50/000000/secured-letter-filled.png">';
+		break;
+	}	
+ }
+// ___  _____  __  __  ____ 
+/// __)(  _  )(  \/  )( ___)
+//\__ \ )(_)(  )    (  )__) 
+//(___/(_____)(_/\/\_)(____)
+  somediv =
+	'<div class="laheta">'+
+	'<input type="text">'+
+	'</div>';
+	
+// __      __    ____  ____  ____  ____  ____  ____ 
+//(  )    /__\  (_  _)(_  _)(_  _)( ___)( ___)(_  _)
+// )(__  /(__)\  _)(_   )(    )(   )__)  )__)   )(  
+//(____)(__)(__)(____) (__)  (__) (____)(____) (__)
+  laitteetdiv =
+	'laitteet';
+	
+//   __    ___  ____  ____  __  __  _  _  ___  ____  ____ 
+//  /__\  / __)( ___)(_  _)(  )(  )( )/ )/ __)( ___)(_  _)
+// /(__)\ \__ \ )__)   )(   )(__)(  )  ( \__ \ )__)   )(  
+//(__)(__)(___/(____) (__) (______)(_)\_)(___/(____) (__) 
+  asetuksetdiv =
+	'asetukset';
+ </script>
+</head>
+
+<body onload="menu(0);">
+<nav>
+ <ul>
+  <li><div onclick="menu(0);" id="some"></div></li>
+  <li><div onclick="menu(1);" id="laitteet"></div></li>
+  <li><div onclick="menu(2);" id="asetukset"></div></li>
+  <li><img class="logo" src="primapowerlogo.jpg"></img></li>
+ </ul>
+</nav>
+
+<div id="ikkuna">
+
+</div>
+
+<!--väliaikainen tulostus-->
+<p id="kuva">
+<button onclick="malli()">Näytä sketsi</button>
+</p>
+<script>
+function malli(){
+	document.getElementById("kuva").innerHTML =
+	'<style>.kuva{width:100%;height:auto;}</style>'+
+	'<img class="kuva" src="primapower.png"></img>';
+}
+</script>
+</body>
+</html>
+<!--(C)Taavetti Kuula-->
