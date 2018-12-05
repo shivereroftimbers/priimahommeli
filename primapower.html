@@ -4,8 +4,11 @@
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <title>PrimaPower</title>
 
- <style>
- ul {
+ <style> 
+nav{
+	border-collapse: collapse;
+}
+ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -27,6 +30,64 @@ li .logo{
 	display: block;
 	float: left;
 }
+
+.laheta{
+	padding: 2vh 5vh;
+}
+    .smol{
+        height: 3vh;
+        width: 3vh;
+        text-align: center;
+		border: none;
+		cursor: pointer;
+        border-radius: 5px;
+    }
+	.smol .img{
+	}
+	.naama{
+	width: 5vh;
+	height: 5vh;
+	border-radius: 100%;
+	}
+	.naama:hover{
+		animation-name: paljasta;
+		animation-duration: 1s;
+	}
+	@keyframes paljasta{
+		from {border-radius: 100%;}
+		to {border-radius: 5%;}
+}
+	.levenna{
+	width: 100%;
+	}
+textarea{
+border-style: none;
+width: 100%;
+}
+textarea:focus{
+	background-color: #EEE;
+	box-shadow: 0px 0px 10px 0px #EEE;
+	border-radius: 5px;
+}
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 5%;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
  </style>
  
  <script>
@@ -73,7 +134,34 @@ li .logo{
 //(___/(_____)(_/\/\_)(____)
   somediv =
 	'<div class="laheta">'+
-	'<input type="text">'+
+	'<table class="levenna">'+
+		'<tr>'+
+			'<td colspan="5"><textarea maxlength="512" id="text" placeholder="Kirjoita uusi viesti" onkeypress="if(event.keyCode==13) {send();document.getElementById("text").value = \'\'};"></textarea></td>'+
+			'<td><img class="naama" src="http://worldartsme.com/images/business-person-clipart-1.jpg"></td>'+
+		'</tr>'+
+		'<tr>'+
+			//Lisää kuva
+			'<td><div class="dropdown">'+
+				'<img class="smol" src="https://img.icons8.com/ios-glyphs/50/000000/add-image.png">'+
+				'<div class="dropdown-content">'+
+					'thunder tits!'+
+					'</div></td>'+
+			//Lisää liite
+			'<td><div class="dropdown">'+
+				'<img class="smol" src="https://img.icons8.com/ios-glyphs/50/000000/add-file.png">'+
+				'</div class="dropdown-content"></div></td>'+
+			//Lisää henkilö
+			'<td><div class="dropdown">'+
+				'<img class="smol" src="https://img.icons8.com/ios-glyphs/50/000000/contacts.png">'+
+				'</div class="dropdown-content"></div></td>'+
+			//Lisää linkki
+			'<td><div class="dropdown">'+
+				'<img class="smol" src="https://img.icons8.com/ios-glyphs/50/000000/add-link.png">'+
+				'</div class="dropdown-content"></div></td>'+
+			'<td colspan="2"></td>'+
+		'</tr>'+
+	'</table>'+
+	'<hr>'+
 	'</div>';
 	
 // __      __    ____  ____  ____  ____  ____  ____ 
