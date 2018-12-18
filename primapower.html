@@ -2,93 +2,10 @@
 <head>
  <meta charset="utf-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>PrimaPower</title>
+ <script language="JavaScript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" ></script>
+ <title>PrimaPower SoMe</title>
 
- <style> 
-nav{
-	border-collapse: collapse;
-}
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: rgb(0, 132, 201);
-	border-collapse: collapse;
-}
-li .ikoni {
-	height: 7vh;
-    display: block;
-    padding: 0.5vh 3vw;
-    float: right;
-	cursor: pointer;
-}
-li .ikoni:hover {
-    }
-li .logo{
-	height: 8vh;
-	display: block;
-	float: left;
-}
-
-.laheta{
-	padding: 2vh 5vh;
-}
-    .smol{
-        height: 3vh;
-        width: 3vh;
-        text-align: center;
-		border: none;
-		cursor: pointer;
-        border-radius: 5px;
-    }
-	.smol .img{
-	}
-	.naama{
-	width: 5vh;
-	height: 5vh;
-	border-radius: 100%;
-	}
-	.naama:hover{
-		animation-name: paljasta;
-		animation-duration: 1s;
-	}
-	@keyframes paljasta{
-		from {border-radius: 100%;}
-		to {border-radius: 5%;}
-}
-	.levenna{
-	width: 100%;
-	}
-textarea{
-border-style: none;
-width: 100%;
-}
-textarea:focus{
-	background-color: #EEE;
-	box-shadow: 0px 0px 10px 0px #EEE;
-	border-radius: 5px;
-}
-
-    .dropdown {
-        position: relative;
-        display: inline-block;
-    }
-    .dropdown-content {
-        display: none;
-        position: absolute;
-        background-color: #f1f1f1;
-        min-width: 5%;
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-        z-index: 1;
-    }
-    .dropdown-content a {
-        color: black;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-    }
- </style>
+ <link rel="stylesheet" type="text/css" href="primapower.css">
  
  <script>
  function menu(valinta){
@@ -132,36 +49,68 @@ textarea:focus{
 /// __)(  _  )(  \/  )( ___)
 //\__ \ )(_)(  )    (  )__) 
 //(___/(_____)(_/\/\_)(____)
+
+	//lähetysfunktio
+	function send(){
+	   if(document.getElementById('msg').value != 0){
+   		var user = localStorage.getItem('storedname');
+   		var msg = $('#msg').val();
+   
+   $.ajax({
+        url: "http://www.cc.puv.fi/~e1801117/cgi-bin/primapower.php/",
+        type: "GET", 
+        data:"msg="+encodeURIComponent(msg)+"&user="+encodeURIComponent(user)
+   });;
+  console.log("msg sent! user:"+user+" msg:"+msg)
+  document.getElementById("msg").value = '';
+ 
+    var ifr = document.getElementsByName('asdf')[0];
+    ifr.src = ifr.src;
+}}
+
   somediv =
 	'<div class="laheta">'+
 	'<table class="levenna">'+
 		'<tr>'+
-			'<td colspan="5"><textarea maxlength="512" id="text" placeholder="Kirjoita uusi viesti" onkeypress="if(event.keyCode==13) {send();document.getElementById("text").value = \'\'};"></textarea></td>'+
-			'<td><img class="naama" src="http://worldartsme.com/images/business-person-clipart-1.jpg"></td>'+
+			'<td colspan="5"><textarea maxlength="512" id="msg" placeholder="Kirjoita uusi viesti" onkeypress="if(event.keyCode==13) {send();};"></textarea></td>'+
+			'<td><img onclick="send()" class="naama" src="http://worldartsme.com/images/business-person-clipart-1.jpg"></td>'+
 		'</tr>'+
 		'<tr>'+
 			//Lisää kuva
 			'<td><div class="dropdown">'+
 				'<img class="smol" src="https://img.icons8.com/ios-glyphs/50/000000/add-image.png">'+
 				'<div class="dropdown-content">'+
-					'thunder tits!'+
-					'</div></td>'+
+				'<input type="file" id="filee">'+
+				'</div></div>'+
+				'</td>'+
 			//Lisää liite
 			'<td><div class="dropdown">'+
 				'<img class="smol" src="https://img.icons8.com/ios-glyphs/50/000000/add-file.png">'+
-				'</div class="dropdown-content"></div></td>'+
+				'<div class="dropdown-content">'+
+				'e'+
+				'</div></div></td>'+
 			//Lisää henkilö
 			'<td><div class="dropdown">'+
 				'<img class="smol" src="https://img.icons8.com/ios-glyphs/50/000000/contacts.png">'+
-				'</div class="dropdown-content"></div></td>'+
+				'<div class="dropdown-content">'+
+				'</div></div></td>'+
 			//Lisää linkki
 			'<td><div class="dropdown">'+
 				'<img class="smol" src="https://img.icons8.com/ios-glyphs/50/000000/add-link.png">'+
-				'</div class="dropdown-content"></div></td>'+
+				'<div class="dropdown-content">'+
+				'</div></div></td>'+
 			'<td colspan="2"></td>'+
 		'</tr>'+
 	'</table>'+
 	'<hr>'+
+	'</div>'+
+
+//Elämä on tuskaa.
+
+
+
+	'<div>'+
+	'<iframe name="asdf" src="http://www.cc.puv.fi/~e1801117/cgi-bin/select.php"></iframe>'+
 	'</div>';
 	
 // __      __    ____  ____  ____  ____  ____  ____ 
@@ -169,18 +118,36 @@ textarea:focus{
 // )(__  /(__)\  _)(_   )(    )(   )__)  )__)   )(  
 //(____)(__)(__)(____) (__)  (__) (____)(____) (__)
   laitteetdiv =
-	'laitteet';
+	'<img class="levenna" src="primapowerlaitteet.png">';
 	
 //   __    ___  ____  ____  __  __  _  _  ___  ____  ____ 
 //  /__\  / __)( ___)(_  _)(  )(  )( )/ )/ __)( ___)(_  _)
 // /(__)\ \__ \ )__)   )(   )(__)(  )  ( \__ \ )__)   )(  
 //(__)(__)(___/(____) (__) (______)(_)\_)(___/(____) (__) 
+ 
+	if (localStorage.getItem('storedname') == 0 || localStorage.getItem('storedname') == undefined){
+		localStorage.setItem('storedname', 'Teuvo Testikaeyttaja');
+		console.log("No username found in localstorage. Changed to default");
+		}else{
+		console.log("Username found in localstorage: "+localStorage.getItem('storedname'));
+		}
+  
+  function storename(){
+    localStorage.setItem('storedname', document.getElementById("user").value);
+	console.log("Username changed to: "+localStorage.getItem('storedname'));
+  }	
+  
   asetuksetdiv =
-	'asetukset';
+	'<div class="keskita laheta">'+
+ 	'<input type="text" value="'+localStorage.getItem("storedname")+'" id="user">'+
+	'<br><br><button onclick="storename()">Vaihda nimi</button>'+
+	'</div>';
+
  </script>
 </head>
 
 <body onload="menu(0);">
+
 <nav>
  <ul>
   <li><div onclick="menu(0);" id="some"></div></li>
@@ -194,7 +161,7 @@ textarea:focus{
 
 </div>
 
-<!--väliaikainen tulostus-->
+<!--esimerkkikuvan tulostus
 <p id="kuva">
 <button onclick="malli()">Näytä sketsi</button>
 </p>
@@ -204,7 +171,7 @@ function malli(){
 	'<style>.kuva{width:100%;height:auto;}</style>'+
 	'<img class="kuva" src="primapower.png"></img>';
 }
-</script>
+</script>-->
 </body>
 </html>
 <!--(C)Taavetti Kuula-->
